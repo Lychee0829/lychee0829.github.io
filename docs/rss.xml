@@ -1,2 +1,96 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>荔枝的个人博客</title><link>https://lychee0829.github.io</link><description>之前写的全都丢了（</description><copyright>荔枝的个人博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/175487099?v=4&amp;size=256</url><title>avatar</title><link>https://lychee0829.github.io</link></image><lastBuildDate>Sat, 24 Jan 2026 16:12:07 +0000</lastBuildDate><managingEditor>荔枝的个人博客</managingEditor><ttl>60</ttl><webMaster>荔枝的个人博客</webMaster></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>荔枝的个人博客</title><link>https://lychee0829.github.io</link><description>之前写的全都丢了（</description><copyright>荔枝的个人博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/175487099?v=4&amp;size=256</url><title>avatar</title><link>https://lychee0829.github.io</link></image><lastBuildDate>Sat, 24 Jan 2026 16:31:18 +0000</lastBuildDate><managingEditor>荔枝的个人博客</managingEditor><ttl>60</ttl><webMaster>荔枝的个人博客</webMaster><item><title>Arch linux安装步骤（绝对精简版</title><link>https://lychee0829.github.io/post/Arch%20linux-an-zhuang-bu-zou-%EF%BC%88-jue-dui-jing-jian-ban.html</link><description>***写于24/11/16***
+&gt; [!WARNING]
+&gt; 非新手向，新手看这个https://arch.icekylin.online/guide/rookie/basic-install.html
+
+~文章写于24/11/16，内容可能过时~
+文章更新于26/01/25，内容可能过时
+
+## 准备
+访问https://mirrors.sdu.edu.cn/mirror  ，点开常用镜像下载链接，下载Archlinux镜像
+下载ventoy,地址https://mirrors.sdu.edu.cn/github-release/1731742885/github-release/ventoy_Ventoy/v1.0.99/
+下载完后制作启动盘，把镜像塞进去，然后重启，引导进入ventoy，选择archlinux
+systemctl stop reflector.service
+## 连接网络
+iwctl
+device list
+station wlan0 get-networks
+station wlan0 connect 网络名称
+exit
+## 安装
+archinstall
+移动到Mirrors项敲回车，选择China
+分区自己看着办
+User account 选择，选择 Add a user，输入用户名、密码，并且确认作为 Superuser，然后 Confirm and exit
+Timezone 选项，键入 /shanghai，搜索选择 Asia/Shanghai
+然后install
+## 善后一阶段
+pacman -S networkmanager vim sudo zsh zsh-completions
+reboot
+## 善后二阶段
+systemctl enable --now NetworkManager
+nmcli dev wifi list 
+nmcli dev wifi connect 'Wi-Fi名' password '密码'
+hwclock --systohc
+vim /etc/locale.gen
+locale-gen
+echo 'LANG=en_US.UTF-8'  &gt; /etc/locale.conf
+vim ~/.bash_profile
+添加export EDITOR='vim'
+vim /etc/pacman.conf
+～去掉 [multilib] 两行注释开32位库～
+加入
+[archlinuxcn]
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+pacman -Syyu
+pacman -S plasma konsole dolphin
+systemctl enable sddm
+systemctl start sddm
+sudo pacman -S sof-firmware alsa-firmware alsa-ucm-conf
+sudo pacman -S ntfs-3g
+sudo pacman -S adobe-source-han-serif-cn-fonts wqy-zenhei
+sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+sudo pacman -S chromium 
+sudo pacman -S ark 
+~sudo pacman-key --lsign-key 'farseerfc@archlinux.org'~
+sudo pacman -S archlinuxcn-keyring
+sudo pacman -S yay
+
+打开 System Settings &gt; Language and Regional Settings &gt; 在 Language 中点击 Add languages... &gt; 选择中文加入 ADD，再拖拽到第一位 &gt; 点击 Apply
+sudo pacman -S fcitx5-im
+sudo pacman -S fcitx5-chinese-addons
+sudo pacman -S fcitx5-material-color
+~vim ~/.config/environment.d/im.conf
+加入
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+SDL_IM_MODULE=fcitx
+GLFW_IM_MODULE=ibus~
+进入系统设置&gt;键盘&gt;虚拟键盘,启用fcitx5
+sudo systemctl enable --now bluetooth
+https://github.com/wuhgit/CustomPinyinDictionary 
+把词库配置一下
+## 至此，大事已成。</description><guid isPermaLink="true">https://lychee0829.github.io/post/Arch%20linux-an-zhuang-bu-zou-%EF%BC%88-jue-dui-jing-jian-ban.html</guid><pubDate>Sat, 24 Jan 2026 16:24:00 +0000</pubDate></item><item><title>教程-如何淦飞冰点还原</title><link>https://lychee0829.github.io/post/jiao-cheng---ru-he-gan-fei-bing-dian-huan-yuan.html</link><description>*最后编辑于2024/4/29*
+&gt; [!WARNING]
+&gt; 本文方法仅适用于***部分***冰点还原老版本
+&gt; 本文内容可能已完全过时，请注意甄别
+
+&gt; [!NOTE]
+&gt; 本文图片来自https://www.wikihow.com/Uninstall-Deep-Freeze
+## 开始前
+
+准备好: **键盘** **冰点还原安装包**  U盘(存放安装包)
+
+## 第一步
+
+将键盘连接电脑,按下**Ctrl+Shift+Alt+F6**,点击OK(**默认无密码**)
+
+![1](https://www.wikihow.com/images/thumb/4/4a/Uninstall-Deep-Freeze-Step-3-Version-4.jpg/v4-460px-Uninstall-Deep-Freeze-Step-3-Version-4.jpg.webp)
+
+**注: 如果不知道密码,格式化硬盘,然后重新安装 Windows**
+
+## 第二步
+
+单击 **Boot Control** 选项卡。</description><guid isPermaLink="true">https://lychee0829.github.io/post/jiao-cheng---ru-he-gan-fei-bing-dian-huan-yuan.html</guid><pubDate>Sat, 24 Jan 2026 16:11:42 +0000</pubDate></item></channel></rss>
