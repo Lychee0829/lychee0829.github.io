@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>荔枝的个人博客</title><link>https://lychee0829.github.io</link><description>之前写的全都丢了（</description><copyright>荔枝的个人博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/175487099?v=4&amp;size=256</url><title>avatar</title><link>https://lychee0829.github.io</link></image><lastBuildDate>Sat, 21 Feb 2026 06:12:51 +0000</lastBuildDate><managingEditor>荔枝的个人博客</managingEditor><ttl>60</ttl><webMaster>荔枝的个人博客</webMaster><item><title>Arch Linux Plasma自动切换自定义浅/深色主题最全面教程</title><link>https://lychee0829.github.io/post/Arch%20Linux%20Plasma-zi-dong-qie-huan-zi-ding-yi-qian---shen-se-zhu-ti-zui-quan-mian-jiao-cheng.html</link><description>## KDE Plasma
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>荔枝的个人博客</title><link>https://lychee0829.github.io</link><description>之前写的全都丢了（</description><copyright>荔枝的个人博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/175487099?v=4&amp;size=256</url><title>avatar</title><link>https://lychee0829.github.io</link></image><lastBuildDate>Sun, 22 Feb 2026 23:36:29 +0000</lastBuildDate><managingEditor>荔枝的个人博客</managingEditor><ttl>60</ttl><webMaster>荔枝的个人博客</webMaster><item><title>Arch Linux Plasma自动切换浅/深色主题教程</title><link>https://lychee0829.github.io/post/Arch%20Linux%20Plasma-zi-dong-qie-huan-qian---shen-se-zhu-ti-jiao-cheng.html</link><description>## KDE Plasma
 
 全局主题里面肯定是有你不想要的图标或者Plasma外观样式,这一节主要在于修改全局主题
 
@@ -69,7 +69,7 @@ int main(){
 }
 ```
 
-用`swww`或者`waypaper`可能也可以,但是我没有成功,希望有高人指点。</description><guid isPermaLink="true">https://lychee0829.github.io/post/Arch%20Linux%20Plasma-zi-dong-qie-huan-zi-ding-yi-qian---shen-se-zhu-ti-zui-quan-mian-jiao-cheng.html</guid><pubDate>Sat, 21 Feb 2026 06:10:59 +0000</pubDate></item><item><title>Arch查看最后一次系统全面更新更新时间</title><link>https://lychee0829.github.io/post/Arch-cha-kan-zui-hou-yi-ci-xi-tong-quan-mian-geng-xin-geng-xin-shi-jian.html</link><description>## 在这里可使用命令 `grep -e -Syu /var/log/pacman.log | tail -1` 
+用`swww`或者`waypaper`可能也可以,但是我没有成功,希望有高人指点。</description><guid isPermaLink="true">https://lychee0829.github.io/post/Arch%20Linux%20Plasma-zi-dong-qie-huan-qian---shen-se-zhu-ti-jiao-cheng.html</guid><pubDate>Sat, 21 Feb 2026 06:10:59 +0000</pubDate></item><item><title>Arch查看最后一次系统全面更新更新时间</title><link>https://lychee0829.github.io/post/Arch-cha-kan-zui-hou-yi-ci-xi-tong-quan-mian-geng-xin-geng-xin-shi-jian.html</link><description>## 在这里可使用命令 `grep -e -Syu /var/log/pacman.log | tail -1` 
 具体解释如下：
 
 1. **`grep -e -Syu /var/log/pacman.log`**：
