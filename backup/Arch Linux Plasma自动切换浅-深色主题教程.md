@@ -38,26 +38,7 @@ KDE Plasma可以使用plasma-apply-wallpaperimage命令切换壁纸（这个b怎
 ```c
 //#include <stdlib.h>
 #include <unistd.h>
-//#include <stdio.h>b
-    timep = gmtime(&utctime);
-    if(timep->tm_hour+8>24){
-        now=timep->tm_hour+8-24;
-    }
-    else{
-        now=timep->tm_hour+8;
-    }
-    //printf("%d\n",now);
-    //sleep(5);
-    if(now<SUNRISE||now>SUNSET){
-        system("plasma-apply-wallpaperimage ~/Pictures/wall/4.png");
-        //printf("night");
-    }
-    else {
-        system("plasma-apply-wallpaperimage ~/Pictures/wall/2.png");
-        //printf("day");
-    }
-    return 0;
-}
+//#include <stdio.h>
 #include <time.h>
 #define SUNRISE 7
 #define SUNSET 18

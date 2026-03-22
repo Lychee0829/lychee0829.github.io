@@ -50,26 +50,7 @@ KDE Plasma可以使用plasma-apply-wallpaperimage命令切换壁纸（这个b怎
 ```c
 //#include <stdlib.h>
 #include <unistd.h>
-//#include <stdio.h>b
-    timep = gmtime(&utctime);
-    if(timep->tm_hour+8>24){
-        now=timep->tm_hour+8-24;
-    }
-    else{
-        now=timep->tm_hour+8;
-    }
-    //printf('%d\n',now);
-    //sleep(5);
-    if(now<SUNRISE||now>SUNSET){
-        system('plasma-apply-wallpaperimage ~/Pictures/wall/4.png');
-        //printf('night');
-    }
-    else {
-        system('plasma-apply-wallpaperimage ~/Pictures/wall/2.png');
-        //printf('day');
-    }
-    return 0;
-}
+//#include <stdio.h>
 #include <time.h>
 #define SUNRISE 7
 #define SUNSET 18
@@ -136,26 +117,7 @@ KDE Plasma可以使用plasma-apply-wallpaperimage命令切换壁纸（这个b怎
 ```c
 //#include <stdlib.h>
 #include <unistd.h>
-//#include <stdio.h>b
-    timep = gmtime(&utctime);
-    if(timep->tm_hour+8>24){
-        now=timep->tm_hour+8-24;
-    }
-    else{
-        now=timep->tm_hour+8;
-    }
-    //printf('%d\n',now);
-    //sleep(5);
-    if(now<SUNRISE||now>SUNSET){
-        system('plasma-apply-wallpaperimage ~/Pictures/wall/4.png');
-        //printf('night');
-    }
-    else {
-        system('plasma-apply-wallpaperimage ~/Pictures/wall/2.png');
-        //printf('day');
-    }
-    return 0;
-}
+//#include <stdio.h>
 #include <time.h>
 #define SUNRISE 7
 #define SUNSET 18
@@ -275,26 +237,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>示例代码（自用）（日落日出时间不大精确）</p>
 <div class="highlight highlight-source-c"><pre class="notranslate"><span class="pl-c">//#include &lt;stdlib.h&gt;</span>
 <span class="pl-k">#include</span> <span class="pl-s">&lt;unistd.h&gt;</span>
-<span class="pl-c">//#include &lt;stdio.h&gt;b</span>
-    <span class="pl-s1">timep</span> <span class="pl-c1">=</span> <span class="pl-en">gmtime</span>(<span class="pl-c1">&amp;</span><span class="pl-s1">utctime</span>);
-    <span class="pl-k">if</span>(<span class="pl-s1">timep</span><span class="pl-c1">-&gt;</span><span class="pl-c1">tm_hour</span><span class="pl-c1">+</span><span class="pl-c1">8</span><span class="pl-c1">&gt;</span><span class="pl-c1">24</span>){
-        <span class="pl-s1">now</span><span class="pl-c1">=</span><span class="pl-s1">timep</span><span class="pl-c1">-&gt;</span><span class="pl-c1">tm_hour</span><span class="pl-c1">+</span><span class="pl-c1">8</span><span class="pl-c1">-</span><span class="pl-c1">24</span>;
-    }
-    <span class="pl-k">else</span>{
-        <span class="pl-s1">now</span><span class="pl-c1">=</span><span class="pl-s1">timep</span><span class="pl-c1">-&gt;</span><span class="pl-c1">tm_hour</span><span class="pl-c1">+</span><span class="pl-c1">8</span>;
-    }
-    <span class="pl-c">//printf("%d\n",now);</span>
-    <span class="pl-c">//sleep(5);</span>
-    <span class="pl-k">if</span>(<span class="pl-s1">now</span><span class="pl-c1">&lt;</span><span class="pl-c1">SUNRISE</span><span class="pl-c1">||</span><span class="pl-s1">now</span><span class="pl-c1">&gt;</span><span class="pl-c1">SUNSET</span>){
-        <span class="pl-en">system</span>(<span class="pl-s">"plasma-apply-wallpaperimage ~/Pictures/wall/4.png"</span>);
-        <span class="pl-c">//printf("night");</span>
-    }
-    <span class="pl-k">else</span> {
-        <span class="pl-en">system</span>(<span class="pl-s">"plasma-apply-wallpaperimage ~/Pictures/wall/2.png"</span>);
-        <span class="pl-c">//printf("day");</span>
-    }
-    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
-}
+<span class="pl-c">//#include &lt;stdio.h&gt;</span>
 <span class="pl-k">#include</span> <span class="pl-s">&lt;time.h&gt;</span>
 <span class="pl-k">#define</span> <span class="pl-c1">SUNRISE</span> 7
 <span class="pl-k">#define</span> <span class="pl-c1">SUNSET</span> 18
