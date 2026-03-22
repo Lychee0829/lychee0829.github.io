@@ -48,17 +48,9 @@ KDE Plasma可以使用plasma-apply-wallpaperimage命令切换壁纸（这个b怎
 示例代码（自用）（日落日出时间不大精确）
 
 ```c
-#include <stdlib.h>
-//#include <unistd.h>
-//#include <stdio.h>
-#include <time.h>
-#define SUNRISE 7
-#define SUNSET 18
-int main(){
-    int now=0;
-    time_t utctime;
-    struct tm *timep;
-    time(&utctime);
+//#include <stdlib.h>
+#include <unistd.h>
+//#include <stdio.h>b
     timep = gmtime(&utctime);
     if(timep->tm_hour+8>24){
         now=timep->tm_hour+8-24;
@@ -78,6 +70,28 @@ int main(){
     }
     return 0;
 }
+#include <time.h>
+#define SUNRISE 7
+#define SUNSET 18
+int main(){
+    int now=0;
+    time_t utctime;
+    struct tm *timep;
+    time(&utctime);
+    timep = gmtime(&utctime);
+    now = (timep->tm_hour + 8) % 24;
+    //printf('%d\n',now);
+    if(now<SUNRISE||now>SUNSET){
+        execl('/usr/bin/plasma-apply-wallpaperimage','plasma-apply-wallpaperimage','/home/lychee0829/Pictures/wall/4.png',0);
+        //printf('night');
+    }
+    else {
+        execl('/usr/bin/plasma-apply-wallpaperimage','plasma-apply-wallpaperimage','/home/lychee0829/Pictures/wall/2.png',0);
+        //printf('day');
+    }
+    return 0;
+}
+
 ```
 
 用`swww`或者`waypaper`可能也可以,但是我没有成功,希望有高人指点。">
@@ -120,17 +134,9 @@ KDE Plasma可以使用plasma-apply-wallpaperimage命令切换壁纸（这个b怎
 示例代码（自用）（日落日出时间不大精确）
 
 ```c
-#include <stdlib.h>
-//#include <unistd.h>
-//#include <stdio.h>
-#include <time.h>
-#define SUNRISE 7
-#define SUNSET 18
-int main(){
-    int now=0;
-    time_t utctime;
-    struct tm *timep;
-    time(&utctime);
+//#include <stdlib.h>
+#include <unistd.h>
+//#include <stdio.h>b
     timep = gmtime(&utctime);
     if(timep->tm_hour+8>24){
         now=timep->tm_hour+8-24;
@@ -150,6 +156,28 @@ int main(){
     }
     return 0;
 }
+#include <time.h>
+#define SUNRISE 7
+#define SUNSET 18
+int main(){
+    int now=0;
+    time_t utctime;
+    struct tm *timep;
+    time(&utctime);
+    timep = gmtime(&utctime);
+    now = (timep->tm_hour + 8) % 24;
+    //printf('%d\n',now);
+    if(now<SUNRISE||now>SUNSET){
+        execl('/usr/bin/plasma-apply-wallpaperimage','plasma-apply-wallpaperimage','/home/lychee0829/Pictures/wall/4.png',0);
+        //printf('night');
+    }
+    else {
+        execl('/usr/bin/plasma-apply-wallpaperimage','plasma-apply-wallpaperimage','/home/lychee0829/Pictures/wall/2.png',0);
+        //printf('day');
+    }
+    return 0;
+}
+
 ```
 
 用`swww`或者`waypaper`可能也可以,但是我没有成功,希望有高人指点。">
@@ -245,17 +273,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>KDE Plasma可以使用plasma-apply-wallpaperimage命令切换壁纸（这个b怎么这么长</p>
 <p>例如<code class="notranslate">plasma-apply-wallpaperimage ~/Pictures/wall/4.png</code></p>
 <p>示例代码（自用）（日落日出时间不大精确）</p>
-<div class="highlight highlight-source-c"><pre class="notranslate"><span class="pl-k">#include</span> <span class="pl-s">&lt;stdlib.h&gt;</span>
-<span class="pl-c">//#include &lt;unistd.h&gt;</span>
-<span class="pl-c">//#include &lt;stdio.h&gt;</span>
-<span class="pl-k">#include</span> <span class="pl-s">&lt;time.h&gt;</span>
-<span class="pl-k">#define</span> <span class="pl-c1">SUNRISE</span> 7
-<span class="pl-k">#define</span> <span class="pl-c1">SUNSET</span> 18
-<span class="pl-smi">int</span> <span class="pl-en">main</span>(){
-    <span class="pl-smi">int</span> <span class="pl-s1">now</span><span class="pl-c1">=</span><span class="pl-c1">0</span>;
-    <span class="pl-smi">time_t</span> <span class="pl-s1">utctime</span>;
-    <span class="pl-k">struct</span> <span class="pl-smi">tm</span> <span class="pl-c1">*</span><span class="pl-s1">timep</span>;
-    <span class="pl-en">time</span>(<span class="pl-c1">&amp;</span><span class="pl-s1">utctime</span>);
+<div class="highlight highlight-source-c"><pre class="notranslate"><span class="pl-c">//#include &lt;stdlib.h&gt;</span>
+<span class="pl-k">#include</span> <span class="pl-s">&lt;unistd.h&gt;</span>
+<span class="pl-c">//#include &lt;stdio.h&gt;b</span>
     <span class="pl-s1">timep</span> <span class="pl-c1">=</span> <span class="pl-en">gmtime</span>(<span class="pl-c1">&amp;</span><span class="pl-s1">utctime</span>);
     <span class="pl-k">if</span>(<span class="pl-s1">timep</span><span class="pl-c1">-&gt;</span><span class="pl-c1">tm_hour</span><span class="pl-c1">+</span><span class="pl-c1">8</span><span class="pl-c1">&gt;</span><span class="pl-c1">24</span>){
         <span class="pl-s1">now</span><span class="pl-c1">=</span><span class="pl-s1">timep</span><span class="pl-c1">-&gt;</span><span class="pl-c1">tm_hour</span><span class="pl-c1">+</span><span class="pl-c1">8</span><span class="pl-c1">-</span><span class="pl-c1">24</span>;
@@ -271,6 +291,27 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     }
     <span class="pl-k">else</span> {
         <span class="pl-en">system</span>(<span class="pl-s">"plasma-apply-wallpaperimage ~/Pictures/wall/2.png"</span>);
+        <span class="pl-c">//printf("day");</span>
+    }
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+<span class="pl-k">#include</span> <span class="pl-s">&lt;time.h&gt;</span>
+<span class="pl-k">#define</span> <span class="pl-c1">SUNRISE</span> 7
+<span class="pl-k">#define</span> <span class="pl-c1">SUNSET</span> 18
+<span class="pl-smi">int</span> <span class="pl-en">main</span>(){
+    <span class="pl-smi">int</span> <span class="pl-s1">now</span><span class="pl-c1">=</span><span class="pl-c1">0</span>;
+    <span class="pl-smi">time_t</span> <span class="pl-s1">utctime</span>;
+    <span class="pl-k">struct</span> <span class="pl-smi">tm</span> <span class="pl-c1">*</span><span class="pl-s1">timep</span>;
+    <span class="pl-en">time</span>(<span class="pl-c1">&amp;</span><span class="pl-s1">utctime</span>);
+    <span class="pl-s1">timep</span> <span class="pl-c1">=</span> <span class="pl-en">gmtime</span>(<span class="pl-c1">&amp;</span><span class="pl-s1">utctime</span>);
+    <span class="pl-s1">now</span> <span class="pl-c1">=</span> (<span class="pl-s1">timep</span><span class="pl-c1">-&gt;</span><span class="pl-c1">tm_hour</span> <span class="pl-c1">+</span> <span class="pl-c1">8</span>) % <span class="pl-c1">24</span>;
+    <span class="pl-c">//printf("%d\n",now);</span>
+    <span class="pl-k">if</span>(<span class="pl-s1">now</span><span class="pl-c1">&lt;</span><span class="pl-c1">SUNRISE</span><span class="pl-c1">||</span><span class="pl-s1">now</span><span class="pl-c1">&gt;</span><span class="pl-c1">SUNSET</span>){
+        <span class="pl-en">execl</span>(<span class="pl-s">"/usr/bin/plasma-apply-wallpaperimage"</span>,<span class="pl-s">"plasma-apply-wallpaperimage"</span>,<span class="pl-s">"/home/lychee0829/Pictures/wall/4.png"</span>,<span class="pl-c1">0</span>);
+        <span class="pl-c">//printf("night");</span>
+    }
+    <span class="pl-k">else</span> {
+        <span class="pl-en">execl</span>(<span class="pl-s">"/usr/bin/plasma-apply-wallpaperimage"</span>,<span class="pl-s">"plasma-apply-wallpaperimage"</span>,<span class="pl-s">"/home/lychee0829/Pictures/wall/2.png"</span>,<span class="pl-c1">0</span>);
         <span class="pl-c">//printf("day");</span>
     }
     <span class="pl-k">return</span> <span class="pl-c1">0</span>;

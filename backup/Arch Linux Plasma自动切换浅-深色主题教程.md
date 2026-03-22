@@ -36,17 +36,9 @@ KDE Plasma可以使用plasma-apply-wallpaperimage命令切换壁纸（这个b怎
 示例代码（自用）（日落日出时间不大精确）
 
 ```c
-#include <stdlib.h>
-//#include <unistd.h>
-//#include <stdio.h>
-#include <time.h>
-#define SUNRISE 7
-#define SUNSET 18
-int main(){
-    int now=0;
-    time_t utctime;
-    struct tm *timep;
-    time(&utctime);
+//#include <stdlib.h>
+#include <unistd.h>
+//#include <stdio.h>b
     timep = gmtime(&utctime);
     if(timep->tm_hour+8>24){
         now=timep->tm_hour+8-24;
@@ -66,6 +58,28 @@ int main(){
     }
     return 0;
 }
+#include <time.h>
+#define SUNRISE 7
+#define SUNSET 18
+int main(){
+    int now=0;
+    time_t utctime;
+    struct tm *timep;
+    time(&utctime);
+    timep = gmtime(&utctime);
+    now = (timep->tm_hour + 8) % 24;
+    //printf("%d\n",now);
+    if(now<SUNRISE||now>SUNSET){
+        execl("/usr/bin/plasma-apply-wallpaperimage","plasma-apply-wallpaperimage","/home/lychee0829/Pictures/wall/4.png",0);
+        //printf("night");
+    }
+    else {
+        execl("/usr/bin/plasma-apply-wallpaperimage","plasma-apply-wallpaperimage","/home/lychee0829/Pictures/wall/2.png",0);
+        //printf("day");
+    }
+    return 0;
+}
+
 ```
 
 用`swww`或者`waypaper`可能也可以,但是我没有成功,希望有高人指点
