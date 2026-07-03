@@ -2,6 +2,9 @@
 
 在Arch Linux中i18n文件全部存放在`/usr/share/locale/`中
 
+> [!WARNING]
+> 其他的发行版应该也是这样,但我不清楚是不是有那么几个罕见(
+
 中文的翻译文件被放在`/usr/share/locale/zh_CN/`
 
 而命令行软件输出的汉化文件在`/usr/share/locale/zh_CN/LC_MESSAGES/`

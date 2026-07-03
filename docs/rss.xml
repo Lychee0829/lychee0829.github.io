@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>荔枝的个人博客</title><link>https://lychee0829.github.io</link><description>之前写的全都丢了（</description><copyright>荔枝的个人博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/175487099?v=4&amp;size=256</url><title>avatar</title><link>https://lychee0829.github.io</link></image><lastBuildDate>Fri, 03 Jul 2026 05:09:57 +0000</lastBuildDate><managingEditor>荔枝的个人博客</managingEditor><ttl>60</ttl><webMaster>荔枝的个人博客</webMaster><item><title>Linux自定义CLI汉化显示内容(i18n)</title><link>https://lychee0829.github.io/post/Linux-zi-ding-yi-CLI-han-hua-xian-shi-nei-rong-%28i18n%29.html</link><description>## 引语
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>荔枝的个人博客</title><link>https://lychee0829.github.io</link><description>之前写的全都丢了（</description><copyright>荔枝的个人博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/175487099?v=4&amp;size=256</url><title>avatar</title><link>https://lychee0829.github.io</link></image><lastBuildDate>Fri, 03 Jul 2026 05:14:12 +0000</lastBuildDate><managingEditor>荔枝的个人博客</managingEditor><ttl>60</ttl><webMaster>荔枝的个人博客</webMaster><item><title>Linux自定义CLI汉化显示内容(i18n)</title><link>https://lychee0829.github.io/post/Linux-zi-ding-yi-CLI-han-hua-xian-shi-nei-rong-%28i18n%29.html</link><description>## 引语
 
 在Arch Linux中i18n文件全部存放在`/usr/share/locale/`中
+
+&gt; [!WARNING]
+&gt; 其他的发行版应该也是这样,但我不清楚是不是有那么几个罕见(
 
 中文的翻译文件被放在`/usr/share/locale/zh_CN/`
 
