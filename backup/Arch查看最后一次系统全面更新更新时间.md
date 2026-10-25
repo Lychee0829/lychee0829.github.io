@@ -1,5 +1,9 @@
-## 在这里可使用命令 `grep -e -Syu /var/log/pacman.log | tail -1` 
+使用命令 `grep -e -Syu /var/log/pacman.log | tail -1` 
 具体解释如下：
+
+>[!WARNING}
+>
+>下面的内容由Deepseek-v3编写
 
 1. **`grep -e -Syu /var/log/pacman.log`**：
    - `-e`：告诉 `grep` 下一个参数是要搜索的模式。
