@@ -44,13 +44,13 @@ eq(equalizer)的目的正是在于将耳机的频响曲线修正到理想的效�
 
 然后点击红圈的位置让多条曲线缩成一条平均曲线
 
-![]()
+![](https://github.com/Lychee0829/lychee0829.github.io/blob/main/img/1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_20261025_103951.png)
 
 点击图像上面的Screenshot,保存
 
 然后把图片涂抹成这个样子
 
-![]()
+![](https://github.com/Lychee0829/lychee0829.github.io/blob/main/img/1/Space%20Travel%202%20Ultra.png)
 
 打开[automeris.io: Computer vision assisted data extraction from charts using WebPlotDigitizer](https://automeris.io)
 
@@ -102,7 +102,7 @@ eq(equalizer)的目的正是在于将耳机的频响曲线修正到理想的效�
 
 不同系统不同方法
 
-> [!INFO]
+> [!NOTE]
 >
 > 对于Windows
 >
@@ -110,7 +110,7 @@ eq(equalizer)的目的正是在于将耳机的频响曲线修正到理想的效�
 >
 > 点下载图标
 
-> [!INFO]
+> [!NOTE]
 >
 > 对于Linux
 >
