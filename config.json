@@ -2,5 +2,11 @@
     "title":"荔枝的个人博客",
     "subTitle":"之前写的全都丢了（",
     "avatarUrl":"https://avatars.githubusercontent.com/u/175487099?v=4&size=256",
+    "startSite":"2020/8/29",
+    "i18n":"CN",
+    "UTC":8,
+    "allHead":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>",
+    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>",
+    "singlePage":["about"],
     "GMEEK_VERSION":"last"
 }
