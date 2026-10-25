@@ -79,6 +79,42 @@ https://forum.archlinuxcn.org/t/topic/13973/5
 
 - 如果配置了按Shift更换输入法,在使用虚拟键盘时不会生效,应该额外设置Ctrl+空格然后按照这个进行切换
 
+## 进行游戏
 
+> [!CAUTION]
+>
+> 该章节**已弃用**
+>
+> 原因:经实际测试**无论任何环境**明日方舟游戏体验均大幅落后于Windows环境
 
+本章节以明日方舟为例
 
+### 对于Wine/Proton
+
+参照[Gaming with CachyOS Guide | CachyOS](https://wiki.cachyos.org/configuration/gaming/)
+
+经测试在渲染手机号登陆时出现问题,我暂未解决方案
+
+以及设备温度极高,渲染极其卡顿
+
+故不采用此方案
+
+### 对于Waydroid
+
+安装之类的是通用的
+
+对于渲染错误(带有闪烁条纹)
+
+是Kwin的问题,去上游搜了bug
+
+要把环境变量设置成KWIN_DRM_NO_DIRECT_SCANOUT=1
+
+然后重新登录
+
+对于waydroid下载太慢(2-3m/s)
+
+```bash
+sudo mount -o remount,barrier=0 /
+```
+
+但是重启失效

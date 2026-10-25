@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>荔枝的个人博客</title><link>https://lychee0829.github.io</link><description>之前写的全都丢了（</description><copyright>荔枝的个人博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/175487099?v=4&amp;size=256</url><title>avatar</title><link>https://lychee0829.github.io</link></image><lastBuildDate>Sun, 25 Oct 2026 03:56:03 +0000</lastBuildDate><managingEditor>荔枝的个人博客</managingEditor><ttl>60</ttl><webMaster>荔枝的个人博客</webMaster><item><title>从零开始的自主耳机eq调节指北</title><link>https://lychee0829.github.io/post/cong-ling-kai-shi-de-zi-zhu-er-ji-eq-diao-jie-zhi-bei.html</link><description>&gt; [!WARNING]
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>荔枝的个人博客</title><link>https://lychee0829.github.io</link><description>之前写的全都丢了（</description><copyright>荔枝的个人博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/175487099?v=4&amp;size=256</url><title>avatar</title><link>https://lychee0829.github.io</link></image><lastBuildDate>Sun, 25 Oct 2026 04:51:58 +0000</lastBuildDate><managingEditor>荔枝的个人博客</managingEditor><ttl>60</ttl><webMaster>荔枝的个人博客</webMaster><item><title>从零开始的自主耳机eq调节指北</title><link>https://lychee0829.github.io/post/cong-ling-kai-shi-de-zi-zhu-er-ji-eq-diao-jie-zhi-bei.html</link><description>&gt; [!WARNING]
 &gt;
 &gt; 耳机音质是一个相当玄学的话题,调节eq的目的在于让自己满意,**要相信自己的耳朵**
 &gt;
@@ -251,10 +251,45 @@ https://forum.archlinuxcn.org/t/topic/13973/5
 
 - 如果配置了按Shift更换输入法,在使用虚拟键盘时不会生效,应该额外设置Ctrl+空格然后按照这个进行切换
 
+## 进行游戏
 
+&gt; [!CAUTION]
+&gt;
+&gt; 该章节**已弃用**
+&gt;
+&gt; 原因:经实际测试**无论任何环境**明日方舟游戏体验均大幅落后于Windows环境
 
+本章节以明日方舟为例
 
-。</description><guid isPermaLink="true">https://lychee0829.github.io/post/Surface%20Pro%207%2BCachyOS-quan-tao-zhe-teng-bi-ji.html</guid><pubDate>Mon, 12 Oct 2026 15:55:24 +0000</pubDate></item><item><title>Linux自定义CLI汉化显示内容(i18n)</title><link>https://lychee0829.github.io/post/Linux-zi-ding-yi-CLI-han-hua-xian-shi-nei-rong-%28i18n%29.html</link><description>## 引语
+### 对于Wine/Proton
+
+参照[Gaming with CachyOS Guide | CachyOS](https://wiki.cachyos.org/configuration/gaming/)
+
+经测试在渲染手机号登陆时出现问题,我暂未解决方案
+
+以及设备温度极高,渲染极其卡顿
+
+故不采用此方案
+
+### 对于Waydroid
+
+安装之类的是通用的
+
+对于渲染错误(带有闪烁条纹)
+
+是Kwin的问题,去上游搜了bug
+
+要把环境变量设置成KWIN_DRM_NO_DIRECT_SCANOUT=1
+
+然后重新登录
+
+对于waydroid下载太慢(2-3m/s)
+
+```bash
+sudo mount -o remount,barrier=0 /
+```
+
+但是重启失效。</description><guid isPermaLink="true">https://lychee0829.github.io/post/Surface%20Pro%207%2BCachyOS-quan-tao-zhe-teng-bi-ji.html</guid><pubDate>Mon, 12 Oct 2026 15:55:24 +0000</pubDate></item><item><title>Linux自定义CLI汉化显示内容(i18n)</title><link>https://lychee0829.github.io/post/Linux-zi-ding-yi-CLI-han-hua-xian-shi-nei-rong-%28i18n%29.html</link><description>## 引语
 
 在Arch Linux中i18n文件全部存放在`/usr/share/locale/`中
 
