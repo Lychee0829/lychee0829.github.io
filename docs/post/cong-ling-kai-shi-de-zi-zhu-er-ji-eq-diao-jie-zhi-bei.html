@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/175487099?v=4&size=256"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="> [!WARNING]
+>
+> 耳机音质是一个相当玄学的话题,调节eq的目的在于让自己满意,**要相信自己的耳朵**
+>
+> 人云亦云的话没准会因为另一个人的生理特征不一样因而导致你的体验变差
+>
+> 本人不是老烧,麻烦懂行的不要拷打我()
+
+*本文内容可能与其他相关教程存在较大出入,见谅*
+
+## 原理讲解
+
+每个耳机都有自己的频响曲线,频响曲线由硬件决定,并且可以通过声学设备测定
+
+有那么几条理想的频响曲线,它们的声学效果是最好的
+
+eq(equalizer)的目的正是在于将耳机的频响曲线修正到理想的效果
+
+均衡器软件会根据eq文件调节某个频率的输出效果来达到这个目的
+
+由此可见每个耳机都有独特的eq文件
+
+所以网上的eq文件不是为你的耳机特制的,还得要手动制作
+
+## eq文件制作
+
+### 频响曲线csv获取
+
+首先你需要知道自己耳机的**名字**
+
+这里的名字是可用于搜索的英文名称
+
+例
+
+- 潜25 -- Qian25
+
+- 太空漫游2Ultra --Space travel Ultra 2
+
+此外不同型号之间差了一个字可能在频响曲线大相径庭,要确定型号确实是你的耳机
+
+然后打开[这个网站](https://graph.hangout.audio/headphones/)
+
+点击左上角搜索你的耳机,点进去
+
+然后点击红圈的位置让多条曲线缩成一条平均曲线
+
+![]()
+
+点击图像上面的Screenshot,保存
+
+然后把图片涂抹成这个样子
+
+![]()
+
+打开[automeris.io: Computer vision assisted data extraction from charts using WebPlotDigitizer](https://automeris.io)
+
+登陆然后选择文件选择你的图片
+
+选择2D XY Axes
+
+然后Celibrate
+
+随后右侧的X-Axis设为Log
+
+在坐标原点点一个点,右上角有放大镜,在x1里面输入这个点的x坐标
+
+在x轴离原点较远的地方点另一个点,在x2里面输入这个点的x坐标
+
+在坐标原点点一个点,在y1里面输入这个点的y坐标
+
+在y轴离原点较远的地方点另一个点,在y2里面输入这个点的y坐标
+
+点错了按Remove Grid撤销
+
+完事了然后点击Calibrate,点击右边的Run
+
+显示一堆点,**并且都在频响曲线上面**
+
+**有不在曲线上的把图片的那一部分涂抹了然后重来**
+
+没有问题点View Data
+
+点击Download .CSV
+
+### 获取eq文件
+
+打开[AutoEq](https://autoeq.app/)
+
+点击搜索框最右边的打开文件的图标
+
+打开你下载的csv文件
+
+在Profiles里面点击Show advanced
+
+点击Targets
+
+入耳耳机就点带in ear的
+
+不是就看看over-ear
+
+点select equalizer app
+
+不同系统不同方法
+
+> [!INFO]
+>
+> 对于Windows
+>
+> 输入peace点进去
+>
+> 点下载图标
+
+> [!INFO]
+>
+> 对于Linux
+>
+> 输入easyeffects点进去
+>
+> 点下载图标
+
+## 软件准备
+
+在电脑上需要一个应用来加载你的eq
+
+### 对于Windows
+
+[Peace均衡器 v1.5.5.5下载_Peace均衡器 v1.5.5.5官方下载_3DM软件](https://soft.3dmgame.com/down/212530.html)
+
+[Equalizer APO电脑版下载-Equalizer APO中文电脑版下载_3DM软件](https://soft.3dmgame.com/down/377967.html)
+
+先安装第二个然后第一个
+
+安装时有复选框,选自己的耳机
+
+当然对钩可以都打上()
+
+提示overwrite确认
+
+重启系统或者重启音频服务
+
+打开peace,选择第二个界面
+
+点import,选择你在autoeq网站上下载的文件
+
+反正ok就是了
+
+然后观察到均衡器不是直线了
+
+大功告成,当然可能重启一遍才生效()
+
+### 对于Linux
+
+软件在这
+
+[GitHub - wwmm/easyeffects: Limiter, compressor, convolver, equalizer and auto volume and many other plugins for PipeWire applications · GitHub](https://github.com/wwmm/easyeffects)
+
+可以从自己发行版仓库搜编译的包,arch在extra有包
+
+安装LinuxStudioPlugin和Zita
+
+然后打开easyeffects
+
+添加音效-均衡器-右下角三个点-导入APO预设
+
+选择你在autoeq下载的
+
+当然也可以用别的音效
+
+个人喜欢[AUR (en) - easyeffects-digitalone1-presets-git](https://aur.archlinux.org/packages/easyeffects-digitalone1-presets-git)里面的LoudnessCrystal
+
+当然使用预设了要再次导入APO
+。">
+<meta property="og:title" content="从零开始的自主耳机eq调节指北">
+<meta property="og:description" content="> [!WARNING]
+>
+> 耳机音质是一个相当玄学的话题,调节eq的目的在于让自己满意,**要相信自己的耳朵**
+>
+> 人云亦云的话没准会因为另一个人的生理特征不一样因而导致你的体验变差
+>
+> 本人不是老烧,麻烦懂行的不要拷打我()
+
+*本文内容可能与其他相关教程存在较大出入,见谅*
+
+## 原理讲解
+
+每个耳机都有自己的频响曲线,频响曲线由硬件决定,并且可以通过声学设备测定
+
+有那么几条理想的频响曲线,它们的声学效果是最好的
+
+eq(equalizer)的目的正是在于将耳机的频响曲线修正到理想的效果
+
+均衡器软件会根据eq文件调节某个频率的输出效果来达到这个目的
+
+由此可见每个耳机都有独特的eq文件
+
+所以网上的eq文件不是为你的耳机特制的,还得要手动制作
+
+## eq文件制作
+
+### 频响曲线csv获取
+
+首先你需要知道自己耳机的**名字**
+
+这里的名字是可用于搜索的英文名称
+
+例
+
+- 潜25 -- Qian25
+
+- 太空漫游2Ultra --Space travel Ultra 2
+
+此外不同型号之间差了一个字可能在频响曲线大相径庭,要确定型号确实是你的耳机
+
+然后打开[这个网站](https://graph.hangout.audio/headphones/)
+
+点击左上角搜索你的耳机,点进去
+
+然后点击红圈的位置让多条曲线缩成一条平均曲线
+
+![]()
+
+点击图像上面的Screenshot,保存
+
+然后把图片涂抹成这个样子
+
+![]()
+
+打开[automeris.io: Computer vision assisted data extraction from charts using WebPlotDigitizer](https://automeris.io)
+
+登陆然后选择文件选择你的图片
+
+选择2D XY Axes
+
+然后Celibrate
+
+随后右侧的X-Axis设为Log
+
+在坐标原点点一个点,右上角有放大镜,在x1里面输入这个点的x坐标
+
+在x轴离原点较远的地方点另一个点,在x2里面输入这个点的x坐标
+
+在坐标原点点一个点,在y1里面输入这个点的y坐标
+
+在y轴离原点较远的地方点另一个点,在y2里面输入这个点的y坐标
+
+点错了按Remove Grid撤销
+
+完事了然后点击Calibrate,点击右边的Run
+
+显示一堆点,**并且都在频响曲线上面**
+
+**有不在曲线上的把图片的那一部分涂抹了然后重来**
+
+没有问题点View Data
+
+点击Download .CSV
+
+### 获取eq文件
+
+打开[AutoEq](https://autoeq.app/)
+
+点击搜索框最右边的打开文件的图标
+
+打开你下载的csv文件
+
+在Profiles里面点击Show advanced
+
+点击Targets
+
+入耳耳机就点带in ear的
+
+不是就看看over-ear
+
+点select equalizer app
+
+不同系统不同方法
+
+> [!INFO]
+>
+> 对于Windows
+>
+> 输入peace点进去
+>
+> 点下载图标
+
+> [!INFO]
+>
+> 对于Linux
+>
+> 输入easyeffects点进去
+>
+> 点下载图标
+
+## 软件准备
+
+在电脑上需要一个应用来加载你的eq
+
+### 对于Windows
+
+[Peace均衡器 v1.5.5.5下载_Peace均衡器 v1.5.5.5官方下载_3DM软件](https://soft.3dmgame.com/down/212530.html)
+
+[Equalizer APO电脑版下载-Equalizer APO中文电脑版下载_3DM软件](https://soft.3dmgame.com/down/377967.html)
+
+先安装第二个然后第一个
+
+安装时有复选框,选自己的耳机
+
+当然对钩可以都打上()
+
+提示overwrite确认
+
+重启系统或者重启音频服务
+
+打开peace,选择第二个界面
+
+点import,选择你在autoeq网站上下载的文件
+
+反正ok就是了
+
+然后观察到均衡器不是直线了
+
+大功告成,当然可能重启一遍才生效()
+
+### 对于Linux
+
+软件在这
+
+[GitHub - wwmm/easyeffects: Limiter, compressor, convolver, equalizer and auto volume and many other plugins for PipeWire applications · GitHub](https://github.com/wwmm/easyeffects)
+
+可以从自己发行版仓库搜编译的包,arch在extra有包
+
+安装LinuxStudioPlugin和Zita
+
+然后打开easyeffects
+
+添加音效-均衡器-右下角三个点-导入APO预设
+
+选择你在autoeq下载的
+
+当然也可以用别的音效
+
+个人喜欢[AUR (en) - easyeffects-digitalone1-presets-git](https://aur.archlinux.org/packages/easyeffects-digitalone1-presets-git)里面的LoudnessCrystal
+
+当然使用预设了要再次导入APO
+。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lychee0829.github.io/post/cong-ling-kai-shi-de-zi-zhu-er-ji-eq-diao-jie-zhi-bei.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/175487099?v=4&size=256">
+<title>从零开始的自主耳机eq调节指北</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-warning {border-left-color:var(--borderColor-attention-emphasis, var(--color-attention-emphasis));background-color:var(--color-attention-subtle);}.markdown-alert.markdown-alert-warning .markdown-alert-title {color: var(--fgColor-attention,var(--color-attention-fg));}</style>
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">从零开始的自主耳机eq调节指北</h1>
+<div class="title-right">
+    <a href="https://lychee0829.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Lychee0829/lychee0829.github.io/issues/8" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>耳机音质是一个相当玄学的话题,调节eq的目的在于让自己满意,<strong>要相信自己的耳朵</strong></p>
+<p>人云亦云的话没准会因为另一个人的生理特征不一样因而导致你的体验变差</p>
+<p>本人不是老烧,麻烦懂行的不要拷打我()</p>
+</div>
+<p><em>本文内容可能与其他相关教程存在较大出入,见谅</em></p>
+<h2>原理讲解</h2>
+<p>每个耳机都有自己的频响曲线,频响曲线由硬件决定,并且可以通过声学设备测定</p>
+<p>有那么几条理想的频响曲线,它们的声学效果是最好的</p>
+<p>eq(equalizer)的目的正是在于将耳机的频响曲线修正到理想的效果</p>
+<p>均衡器软件会根据eq文件调节某个频率的输出效果来达到这个目的</p>
+<p>由此可见每个耳机都有独特的eq文件</p>
+<p>所以网上的eq文件不是为你的耳机特制的,还得要手动制作</p>
+<h2>eq文件制作</h2>
+<h3>频响曲线csv获取</h3>
+<p>首先你需要知道自己耳机的<strong>名字</strong></p>
+<p>这里的名字是可用于搜索的英文名称</p>
+<p>例</p>
+<ul>
+<li>
+<p>潜25 -- Qian25</p>
+</li>
+<li>
+<p>太空漫游2Ultra --Space travel Ultra 2</p>
+</li>
+</ul>
+<p>此外不同型号之间差了一个字可能在频响曲线大相径庭,要确定型号确实是你的耳机</p>
+<p>然后打开<a href="https://graph.hangout.audio/headphones/" rel="nofollow">这个网站</a></p>
+<p>点击左上角搜索你的耳机,点进去</p>
+<p>然后点击红圈的位置让多条曲线缩成一条平均曲线</p>
+<p><a target="_blank" rel="noopener noreferrer" href=""><img src="" alt="" style="max-width: 100%;"></a></p>
+<p>点击图像上面的Screenshot,保存</p>
+<p>然后把图片涂抹成这个样子</p>
+<p><a target="_blank" rel="noopener noreferrer" href=""><img src="" alt="" style="max-width: 100%;"></a></p>
+<p>打开<a href="https://automeris.io" rel="nofollow">automeris.io: Computer vision assisted data extraction from charts using WebPlotDigitizer</a></p>
+<p>登陆然后选择文件选择你的图片</p>
+<p>选择2D XY Axes</p>
+<p>然后Celibrate</p>
+<p>随后右侧的X-Axis设为Log</p>
+<p>在坐标原点点一个点,右上角有放大镜,在x1里面输入这个点的x坐标</p>
+<p>在x轴离原点较远的地方点另一个点,在x2里面输入这个点的x坐标</p>
+<p>在坐标原点点一个点,在y1里面输入这个点的y坐标</p>
+<p>在y轴离原点较远的地方点另一个点,在y2里面输入这个点的y坐标</p>
+<p>点错了按Remove Grid撤销</p>
+<p>完事了然后点击Calibrate,点击右边的Run</p>
+<p>显示一堆点,<strong>并且都在频响曲线上面</strong></p>
+<p><strong>有不在曲线上的把图片的那一部分涂抹了然后重来</strong></p>
+<p>没有问题点View Data</p>
+<p>点击Download .CSV</p>
+<h3>获取eq文件</h3>
+<p>打开<a href="https://autoeq.app/" rel="nofollow">AutoEq</a></p>
+<p>点击搜索框最右边的打开文件的图标</p>
+<p>打开你下载的csv文件</p>
+<p>在Profiles里面点击Show advanced</p>
+<p>点击Targets</p>
+<p>入耳耳机就点带in ear的</p>
+<p>不是就看看over-ear</p>
+<p>点select equalizer app</p>
+<p>不同系统不同方法</p>
+<blockquote>
+<p>[!INFO]</p>
+<p>对于Windows</p>
+<p>输入peace点进去</p>
+<p>点下载图标</p>
+</blockquote>
+<blockquote>
+<p>[!INFO]</p>
+<p>对于Linux</p>
+<p>输入easyeffects点进去</p>
+<p>点下载图标</p>
+</blockquote>
+<h2>软件准备</h2>
+<p>在电脑上需要一个应用来加载你的eq</p>
+<h3>对于Windows</h3>
+<p><a href="https://soft.3dmgame.com/down/212530.html" rel="nofollow">Peace均衡器 v1.5.5.5下载_Peace均衡器 v1.5.5.5官方下载_3DM软件</a></p>
+<p><a href="https://soft.3dmgame.com/down/377967.html" rel="nofollow">Equalizer APO电脑版下载-Equalizer APO中文电脑版下载_3DM软件</a></p>
+<p>先安装第二个然后第一个</p>
+<p>安装时有复选框,选自己的耳机</p>
+<p>当然对钩可以都打上()</p>
+<p>提示overwrite确认</p>
+<p>重启系统或者重启音频服务</p>
+<p>打开peace,选择第二个界面</p>
+<p>点import,选择你在autoeq网站上下载的文件</p>
+<p>反正ok就是了</p>
+<p>然后观察到均衡器不是直线了</p>
+<p>大功告成,当然可能重启一遍才生效()</p>
+<h3>对于Linux</h3>
+<p>软件在这</p>
+<p><a href="https://github.com/wwmm/easyeffects">GitHub - wwmm/easyeffects: Limiter, compressor, convolver, equalizer and auto volume and many other plugins for PipeWire applications · GitHub</a></p>
+<p>可以从自己发行版仓库搜编译的包,arch在extra有包</p>
+<p>安装LinuxStudioPlugin和Zita</p>
+<p>然后打开easyeffects</p>
+<p>添加音效-均衡器-右下角三个点-导入APO预设</p>
+<p>选择你在autoeq下载的</p>
+<p>当然也可以用别的音效</p>
+<p>个人喜欢<a href="https://aur.archlinux.org/packages/easyeffects-digitalone1-presets-git" rel="nofollow">AUR (en) - easyeffects-digitalone1-presets-git</a>里面的LoudnessCrystal</p>
+<p>当然使用预设了要再次导入APO</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://lychee0829.github.io">荔枝的个人博客</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Lychee0829/lychee0829.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
